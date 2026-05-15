@@ -1,0 +1,143 @@
+app:
+  name: telegram-oi-volume-screener
+  log_level: INFO
+  sqlite_path: data/screener.sqlite3
+
+telegram:
+  enabled: true
+  token_env: TELEGRAM_BOT_TOKEN
+  allowed_user_ids_env: TELEGRAM_ALLOWED_USER_IDS
+
+coinalyze:
+  enabled: true
+  api_key_env: COINALYZE_API_KEY
+  max_symbol_calls_per_minute: 30
+
+exchanges:
+  binance:
+    enabled: false
+  bybit:
+    enabled: true
+  okx:
+    enabled: false
+
+signal:
+  profile: normal
+  direction: long
+  aggregation_mode: primary_confirmed
+  primary_exchange: bybit
+  oi_period_minutes: 20
+  volume_spike_period_minutes: 15
+  volume_baseline_period_minutes: 120
+  price_change_period_minutes: 15
+  volatility_period_minutes: 30
+  volatility_display_mode: market
+  whitelist_symbols: []
+  blacklist_symbols: []
+  max_symbols_per_refresh: 40
+  oi_scan_max_symbols: 350
+  oi_scan_min_24h_volume_usdt: 1000000
+  min_secondary_oi_change_pct: 3
+  min_secondary_volume_spike_ratio: 1.2
+  max_price_divergence_pct: 1.5
+  min_confirming_exchanges: 1
+
+profiles:
+  conservative:
+    min_oi_change_pct: 12
+    min_oi_value_change_usdt: 2000000
+    min_24h_volume_usdt: 50000000
+    min_volume_spike_ratio: 2.5
+    min_price_change_pct: 0.8
+    min_volatility_pct: 1
+    max_volatility_pct: 3
+    max_funding_rate_pct: 0.03
+    min_score_to_alert: 80
+    cooldown_minutes: 90
+  normal:
+    min_oi_change_pct: 10
+    min_oi_value_change_usdt: 500000
+    min_24h_volume_usdt: 20000000
+    min_volume_spike_ratio: 2.0
+    min_price_change_pct: 0.5
+    min_volatility_pct: 1
+    max_volatility_pct: 4
+    max_funding_rate_pct: 0.05
+    min_score_to_alert: 70
+    cooldown_minutes: 60
+  aggressive:
+    min_oi_change_pct: 6
+    min_oi_value_change_usdt: 200000
+    min_24h_volume_usdt: 10000000
+    min_volume_spike_ratio: 1.5
+    min_price_change_pct: 0.3
+    min_volatility_pct: 0.7
+    max_volatility_pct: 6
+    max_funding_rate_pct: 0.08
+    min_score_to_alert: 60
+    cooldown_minutes: 30
+
+realtime:
+  enabled: true
+  signal_eval_interval_seconds: 5
+  full_rest_refresh_interval_seconds: 300
+  hot_candidate_oi_ratio: 0.7
+  hot_candidate_ttl_minutes: 15
+  hot_candidate_max_symbols_per_exchange: 30
+  hot_candle_refresh_interval_seconds: 90
+  avg24h_candle_refresh_interval_seconds: 60
+  avg24h_candle_batch_size: 5
+  circuit_breaker_failure_threshold: 5
+  circuit_breaker_cooldown_seconds: 300
+  degraded_max_concurrency: 2
+  degraded_oi_batch_size: 5
+  normal_request_delay_ms: 200
+  degraded_request_delay_ms: 500
+  websocket:
+    enabled: true
+    reconnect_backoff_seconds: [1, 2, 5, 10, 30]
+    heartbeat_timeout_seconds: 30
+  binance:
+    ticker_ws_enabled: true
+    agg_trade_ws_enabled: false
+    oi_rest_poll_interval_seconds: 30
+    oi_refresh_batch_size: 20
+    candidate_oi_rest_poll_interval_seconds: 10
+  bybit:
+    ticker_ws_enabled: true
+    trade_ws_enabled: false
+    oi_from_ticker_ws: true
+    oi_rest_fallback_interval_seconds: 60
+    oi_refresh_batch_size: 20
+    candidate_oi_rest_poll_interval_seconds: 15
+  okx:
+    ticker_ws_enabled: true
+    trade_ws_enabled: false
+    open_interest_ws_enabled: true
+    oi_rest_fallback_interval_seconds: 60
+    oi_refresh_batch_size: 20
+    candidate_oi_rest_poll_interval_seconds: 15
+
+history:
+  hot_buffer_hours: 4
+  market_snapshot_days: 7
+  oi_history_days: 14
+  candle_1m_days: 3
+  candle_5m_days: 30
+  funding_history_days: 30
+  signal_history_days: 90
+  cleanup_interval_hours: 6
+  backfill_top_symbols: 40
+  backfill_batch_size: 8
+
+execution:
+  mode: manual
+  exchange: none
+
+grid:
+  default_investment_usdt: 100
+  default_leverage: 3
+  default_grid_count: 30
+  default_range_pct: 6
+  long_lower_weight: 0.7
+  long_upper_weight: 0.3

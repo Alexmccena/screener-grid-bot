@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+pytest-cache-files-*/
+.ruff_cache/
+.tmp/
+*.pyc
+.env
+config.yaml
+data/*.sqlite3
+data/*.sqlite3-*
+runtime*.log
