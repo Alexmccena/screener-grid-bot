@@ -3,7 +3,7 @@ from telegram_oi_screener.models import AggregationMode, ExchangeName
 
 
 def test_load_default_config() -> None:
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     assert config.signal.profile == "normal"
     assert config.signal.aggregation_mode is AggregationMode.PRIMARY_CONFIRMED
     assert config.signal.enabled_exchanges == (ExchangeName.BYBIT,)

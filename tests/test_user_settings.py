@@ -104,7 +104,7 @@ def test_primary_confirmation_respects_enabled_filters() -> None:
 
 
 def test_user_settings_select_exchanges_and_any_selected_mode() -> None:
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     settings = effective_settings(
         config,
         {"enabled_exchanges": ["binance", "okx"], "enabled_filters": ["oi_change_pct"]},
@@ -116,7 +116,7 @@ def test_user_settings_select_exchanges_and_any_selected_mode() -> None:
 
 
 def test_user_settings_override_volatility_period() -> None:
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     settings = effective_settings(
         config,
         {

@@ -10,7 +10,7 @@ from telegram_oi_screener.rolling_buffer import RollingBuffer
 
 
 def test_oi_only_selection_uses_broader_low_volume_universe() -> None:
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     settings = replace(
         config.signal,
         enabled_filters=("oi_change_pct",),
@@ -33,7 +33,7 @@ def test_oi_only_selection_uses_broader_low_volume_universe() -> None:
 
 
 def test_full_filter_selection_keeps_24h_volume_prefilter() -> None:
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     service = MarketDataService(config=config, buffer=RollingBuffer(), clients={})
     snapshots = {
         ExchangeName.BINANCE: {
@@ -50,7 +50,7 @@ def test_full_filter_selection_keeps_24h_volume_prefilter() -> None:
 def test_refresh_uses_coinalyze_fallback_after_exchange_error() -> None:
     import asyncio
 
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     fallback = DummyFallback()
     service = MarketDataService(
         config=config,

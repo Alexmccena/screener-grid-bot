@@ -15,7 +15,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 SECTORS_PATH = ROOT / "data" / "sectors.yaml"
 CACHE_PATH = ROOT / ".tmp" / "sector_audit_cache.json"
-REPORT_PATH = ROOT / "sector_audit_report.csv"
+REPORT_PATH = ROOT / "docs" / "reports" / "sector_audit_report.csv"
 
 DELAY_SECONDS = 2.2
 MAX_RETRIES = 4
@@ -160,6 +160,7 @@ def _write_report(rows: list[dict[str, Any]]) -> None:
     if not rows:
         return
     rows = sorted(rows, key=lambda row: (row["status"], row["current_sector"], row["symbol"]))
+    REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with REPORT_PATH.open("w", encoding="utf-8", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=list(rows[0]))
         writer.writeheader()

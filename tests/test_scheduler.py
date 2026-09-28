@@ -65,7 +65,7 @@ class CandleClient:
 def test_oi_refresh_handles_enriched_symbol_missing_from_state() -> None:
     import asyncio
 
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     db_path = Path("data") / f"test_scheduler_{uuid4().hex}.sqlite3"
     storage = SQLiteStorage(db_path)
     storage.init_schema()
@@ -96,7 +96,7 @@ def test_oi_refresh_handles_enriched_symbol_missing_from_state() -> None:
 def test_send_evaluation_runs_only_after_data_revision_changes() -> None:
     import asyncio
 
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     db_path = Path("data") / f"test_scheduler_{uuid4().hex}.sqlite3"
     storage = SQLiteStorage(db_path)
     storage.init_schema()
@@ -129,7 +129,7 @@ def test_send_evaluation_runs_only_after_data_revision_changes() -> None:
 def test_evaluate_current_tolerates_snapshot_mutation_during_iteration() -> None:
     import asyncio
 
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     db_path = Path("data") / f"test_scheduler_{uuid4().hex}.sqlite3"
     storage = SQLiteStorage(db_path)
     storage.init_schema()
@@ -174,7 +174,7 @@ def test_evaluate_current_tolerates_snapshot_mutation_during_iteration() -> None
 def test_hot_candidate_is_registered_when_oi_is_close_to_threshold() -> None:
     import asyncio
 
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     db_path = Path("data") / f"test_scheduler_{uuid4().hex}.sqlite3"
     storage = SQLiteStorage(db_path)
     storage.init_schema()
@@ -219,7 +219,7 @@ def test_hot_candidate_is_registered_when_oi_is_close_to_threshold() -> None:
 def test_hot_candle_refresh_updates_latest_refresh() -> None:
     import asyncio
 
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     db_path = Path("data") / f"test_scheduler_{uuid4().hex}.sqlite3"
     storage = SQLiteStorage(db_path)
     storage.init_schema()
@@ -253,7 +253,7 @@ def test_hot_candle_refresh_updates_latest_refresh() -> None:
 def test_avg24h_candle_refresh_saves_5m_candles() -> None:
     import asyncio
 
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     db_path = Path("data") / f"test_scheduler_{uuid4().hex}.sqlite3"
     storage = SQLiteStorage(db_path)
     storage.init_schema()
@@ -287,7 +287,7 @@ def test_avg24h_candle_refresh_saves_5m_candles() -> None:
 
 
 def test_regular_oi_refresh_uses_rotating_batches() -> None:
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     db_path = Path("data") / f"test_scheduler_{uuid4().hex}.sqlite3"
     storage = SQLiteStorage(db_path)
     storage.init_schema()
@@ -317,7 +317,7 @@ def test_regular_oi_refresh_uses_rotating_batches() -> None:
 
 
 def test_degraded_oi_refresh_uses_smaller_batch() -> None:
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     db_path = Path("data") / f"test_scheduler_{uuid4().hex}.sqlite3"
     storage = SQLiteStorage(db_path)
     storage.init_schema()
@@ -349,7 +349,7 @@ def test_degraded_oi_refresh_uses_smaller_batch() -> None:
 def test_handle_signal_sends_one_message_per_passing_exchange() -> None:
     import asyncio
 
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     db_path = Path("data") / f"test_scheduler_{uuid4().hex}.sqlite3"
     storage = SQLiteStorage(db_path)
     storage.init_schema()

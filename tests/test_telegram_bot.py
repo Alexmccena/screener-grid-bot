@@ -24,7 +24,7 @@ class FakeMessage:
 
 
 def _bot() -> tuple[TelegramScreenerBot, SQLiteStorage, Path]:
-    config = load_config("config.yaml")
+    config = load_config("config.example.yaml")
     db_path = Path("data") / f"test_telegram_{uuid4().hex}.sqlite3"
     storage = SQLiteStorage(db_path)
     storage.init_schema()

@@ -2,9 +2,15 @@
 
 Telegram-бот для мониторинга публичных фьючерсных рынков Binance, Bybit и OKX. Сервис собирает market data в реальном времени, нормализует данные разных бирж, рассчитывает фильтры по open interest, объему, волатильности, funding и изменению цены, после чего отправляет пользователю сигналы в Telegram.
 
-Проект сделан как pet-project для демонстрации backend-разработки на Python: асинхронный realtime-сбор данных, работа с внешними API, SQLite-хранилище, конфигурация через YAML, Telegram UI, тесты и защитная логика для нестабильной сети/API.
+Pet-project реализован в AI-assisted workflow с использованием ChatGPT и VS Code: асинхронный realtime-сбор данных, работа с внешними API, SQLite-хранилище, конфигурация через YAML, Telegram UI, тесты и защитная логика для нестабильной сети/API.
 
 Реальная торговля не выполняется. API-ключи бирж не нужны: используются только публичные данные.
+
+## Demo
+
+Пример Telegram-сигнала:
+
+![Telegram signal example](docs/screenshots/telegram_signal_example.jpg)
 
 ## Что умеет проект
 
@@ -103,6 +109,8 @@ oi-screener run --config config.yaml
 
 Локальные файлы `.env`, `config.yaml` и SQLite-базы не коммитятся.
 
+Подробнее о логике отбора монет, hot candidates, периодах обновления данных и настройках фильтров: [docs/screener_logic.md](docs/screener_logic.md).
+
 ## Telegram UI
 
 Бот предоставляет кнопочное меню:
@@ -114,10 +122,6 @@ oi-screener run --config config.yaml
 - `Диагностика` - сводка рынка за 24 часа;
 - `Инфо` - краткая справка по кнопкам и фильтрам;
 - `Пауза` / `Продолжить` - управление отправкой сигналов.
-
-Пример Telegram-сигнала:
-
-![Telegram signal example](docs/screenshots/telegram_signal_example.jpg)
 
 ## CLI-команды
 
