@@ -8,9 +8,30 @@ Pet-project реализован в AI-assisted workflow с использова
 
 ## Demo
 
-Пример Telegram-сигнала:
+Ниже несколько экранов Telegram-интерфейса: настройки фильтров, рыночная диагностика, рейтинги событий и пример найденного кандидата.
 
-![Telegram signal example](docs/screenshots/telegram_signal_example.jpg)
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="docs/screenshots/telegram_settings.png" alt="Настройки Telegram screener" width="100%"><br>
+      <sub>Настройки профиля, фильтров и cooldown.</sub>
+    </td>
+    <td width="50%" valign="top">
+      <img src="docs/screenshots/telegram_rankings.png" alt="Рейтинги price events и volatility" width="100%"><br>
+      <sub>Top Price events и Top Volatility 5m.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="docs/screenshots/telegram_diagnostics.png" alt="Диагностика рынка за 24 часа" width="100%"><br>
+      <sub>Диагностика рынка за 24 часа и статистика по секторам.</sub>
+    </td>
+    <td width="50%" valign="top">
+      <img src="docs/screenshots/telegram_signal.png" alt="Статус screener и пример сигнала" width="100%"><br>
+      <sub>Статус сервиса и пример кандидата LONG grid.</sub>
+    </td>
+  </tr>
+</table>
 
 ## Что умеет проект
 
